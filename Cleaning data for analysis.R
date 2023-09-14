@@ -58,7 +58,14 @@ crime_data_filter['2010',c('Population1', 'Robbery')]
 #check out the grepl function
 ?grepl
 
-rate_nominal_filter <- grepl('rate', colnames(crime_data_filter), ignore.case = TRUE)
+#defining a function that seperates our data based on specific pattern
+
+sep_df <- function(pattern, x) {
+  new_df <- x[,grepl(pattern = pattern, x = colnames(x), ignore.case = TRUE)]
+  return(new_df)
+}
+
+rate_nominal_filter <- sep_df('rate', crime_data_filter)
 
 crime_rate_data <- as.data.frame(crime_data_filter[,rate_nominal_filter])
 
