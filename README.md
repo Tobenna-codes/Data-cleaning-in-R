@@ -23,4 +23,10 @@ Also contains use of ggplot to visualize our now cleaned data at the end.
 
 #### The R code for the bar plot
 ```R
-
+(
+ggplot(data = mean_crime/1000, aes(x = rownames(mean_crime), y = mean_value)) 
+        + geom_bar(stat = 'identity', fill = 'darkorange')
+        + xlab('Crimes') + ylab('Mean Value (K)') + labs(title = 'US Crime Reports', subtitle = '1997 - 2016') 
+        + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+)
+```
